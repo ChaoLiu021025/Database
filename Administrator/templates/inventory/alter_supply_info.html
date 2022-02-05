@@ -1,0 +1,84 @@
+{% extends 'inventory/invent.html' %}
+{% block title %}
+    <title>修改供货信息</title>
+{% endblock %}
+
+
+
+    <br><br>
+{% block mainbody %}
+    <div id="wai">
+    <div class="input_info_div">
+
+    <form method="post" action="alter_supply_info">
+        <b>查询：</b>
+        <input type="hidden" name="whichform" value="2" >
+        <input type="submit" class="input_info_submit" value="查询">
+    </form><br><br>
+{#    <form method="post" action="alter_supply_info">#}
+{#        <b>修改供货信息的id：</b>#}
+{#        <input type="text" name="id" class="search_info_text"><br>#}
+{#    <b>输入要修改的选项：</b>#}
+{#    <select name="option" class="input_info_text">#}
+{#        <option value="kong">无</option>#}
+{#        <option value="ordernumber">供货单号</option>#}
+{#        <option value="suppier">供货商</option>#}
+{#        <option value="supply_time">供货时间</option>#}
+{#        <option value="type">类型</option>#}
+{#        <option value="number">供货数量</option>#}
+{#        <option value="price">单价</option>#}
+{#        <option value="note">备注</option>#}
+{#        <input type="hidden" name="whichform" value="3" ><br>#}
+{#         </select>#}
+{#        <b>修改内容</b>#}
+{#        <input type="text" name="alter" class="search_info_text"><br>#}
+{#        <b>若修改供货商使用此选项：</b> <select name="suppier" class="input_info_text"><option value="kong">无</option>{% for suppier in suppier %}  <option value='{{ suppier.name }}'>{{ suppier.name }}</option>  {% endfor %}</select><br>#}
+{#        <b>若修改供货类型使用此选项：</b><select name="type" class="input_info_text"><option value="kong">无</option>{% for type in type %}  <option value='{{ type.type }}'>{{ type.type }}</option>  {% endfor %}</select><br>#}
+{#        <b>若修改供货时间使用此选项：</b>><input type="date" name="supply_time" class="search_info_text"><br>#}
+{#        <input type="submit" class="input_info_submit" value="提交">#}
+{#        <h6 id="error">{{ error3 }}</h6>#}
+{#        <h6 id="success">{{ success3 }}</h6>#}
+{#</form>#}
+        <form method="post" action="alter_supply_info">
+            <b>删除供货信息的id：</b>
+            <select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>
+            <input type="hidden" name="whichform" value="4" >
+            <input type="submit" class="input_info_submit" value="删除">
+            <h6 id="error">{{ error4 }}</h6>
+            <h6 id="success">{{ success4 }}</h6>
+        </form>
+    </div>
+    <div class="input_info_div3">
+    <table id='result' border="2">
+         <thead>
+            <tr>
+                <th>id</th>
+                <th>供货单号</th>
+                <th>供货商</th>
+                <th>供货时间</th>
+                <th>供货类型</th>
+                <th>供货数量</th>
+                <th>单价</th>
+                <th>总价</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in result %}
+                <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.ordernumber }}</td>
+                <td>{{ result.supplier }}</td>
+                <td>{{ result.supply_time }}</td>
+                <td>{{ result.type }}</td>
+                <td>{{ result.number }}</td>
+                <td>{{ result.price }}</td>
+                <td>{{ result.totalprice}}</td>
+                <td>{{ result.note }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

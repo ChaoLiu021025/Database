@@ -1,0 +1,191 @@
+{#{% extends 'inventory/invent.html' %}#}
+{#{% block title %}#}
+{#    <title>详细供货信息</title>#}
+{#{% endblock %}#}
+{##}
+{##}
+{##}
+{#    <br><br>#}
+{#{% block mainbody %}#}
+{#    <div id="wai">#}
+{#    <div class="input_info_div">#}
+{#    <form method="post" action="supply_info">#}
+{#        <b>查询：</b>#}
+{#        <input type="hidden" name="whichform" value="2" >#}
+{#        <input type="submit" class="input_info_submit" value="查询">#}
+{#    </form><br><br>#}
+{#<form method="post" action="supply_info">#}
+{#    <b>录入供货信息：</b><br>#}
+{#    <b>供货单号：</b><input type="text" name="ordernumber" class="search_info_text"><br>#}
+{#    <b>供货商：</b><select name="suppier" class="input_info_text"><option value="kong">无</option>{% for suppier in suppier %}  <option value='{{ suppier.name }}'>{{ suppier.name }}</option>  {% endfor %}</select><br>#}
+{#    <b>供货时间：</b><input type="date" name="supply_time" class="search_info_text"><br>#}
+{#    <b>供货类型：</b><select name="type" class="input_info_text"><option value="kong">无</option>{% for type in type %}  <option value='{{ type.type }}'>{{ type.type }}</option>  {% endfor %}</select><br>#}
+{#    <b>供货数量：</b><input id='number' type="text" name="number" class="search_info_text"><br>#}
+{#    <b>供货价格：</b><input id='price' type="text" name="price" class="search_info_text"><br>#}
+{#    <b>供货总价：</b><input id='totalprice' type="text" name="totalprice" class="search_info_text"><br>#}
+{#    <b>备注：</b><input type="text" name="note" class="search_info_text"><br>#}
+{#    <input type="hidden" name="whichform" value="1" >#}
+{#    <input type="submit" value="录入" class="input_info_submit">#}
+{#    <h6 id="error">{{ error1 }}</h6>#}
+{#    <h6 id="success">{{ success1 }}</h6>#}
+{#</form>#}
+{#    </div>#}
+{#    <div class="input_info_div3">#}
+{#    <table id='result' border="2">#}
+{#         <thead>#}
+{#            <tr>#}
+{#                <th>供货单号</th>#}
+{#                <th>供货商</th>#}
+{#                <th>供货时间</th>#}
+{#                <th>供货类型</th>#}
+{#                <th>数量</th>#}
+{#                <th>单价</th>#}
+{#                <th>总价</th>#}
+{#                <th>备注</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for result in result %}#}
+{#                <tr>#}
+{#                <td>{{ result.ordernumber }}</td>#}
+{#                <td>{{ result.supplier }}</td>#}
+{#                <td>{{ result.supply_time }}</td>#}
+{#                <td>{{ result.type }}</td>#}
+{#                <td>{{ result.number }}</td>#}
+{#                <td>{{ result.price }}</td>#}
+{#                <td>{{ result.totalprice}}</td>#}
+{#                <td>{{ result.note }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'inventory/invent.html' %}
+{% block title %}
+    <title>库存信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+   <div class="row">
+		<div class="tm-section" id="tm-section-3">
+			<div class="col-md-6 margin-bottom-sm-8">
+                <div class="tm-2-col-box-left">
+                    <p class="text-left tm-description">
+                    <form action="admin/inventory/supply_info" method="post" class="basic-grey">
+                        <h1>录入供货信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>供货单号：</span><input type="text" name="ordernumber" class="search_info_text">
+                        </label>
+                        <label>
+                            <span>供货商：</span><select name="suppier" class="input_info_text"><option value="kong">无</option>{% for suppier in suppier %}  <option value='{{ suppier.name }}'>{{ suppier.name }}</option>  {% endfor %}</select>
+                        </label>
+
+                     <label>
+                            <span>供货数量：</span><input id='number' type="text" name="number" class="search_info_text">
+                        </label>
+                <label>
+                            <span>供货类型：</span><select name="type" class="input_info_text"><option value="kong">无</option>{% for type in type %}  <option value='{{ type.type }}'>{{ type.type }}</option>  {% endfor %}</select>
+                        </label>
+                     <label>
+                            <span>供货价格：</span><input id='price' type="text" name="price" class="search_info_text">
+                        </label>
+                     <label>
+                            <span>供货总价：</span><input id='totalprice' type="text" name="totalprice" class="search_info_text">
+                        </label>
+                    <label>
+                            <span>备注：</span><input type="text" name="note" class="search_info_text">
+                        </label>
+                           <label>
+                            <span>供货时间：</span><input type="date" name="supply_time" class="search_info_text">
+                        </label>
+
+                            <input type="hidden" name="whichform" value="1" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="提交">
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                            </form>
+                    </p>
+
+					</div>
+				</div>
+			    <div class="col-md-6">
+				    <div>
+                        <p class="tm-description-text">
+
+                        <form method="post" action="admin/inventory/supply_info" class="basic-grey">
+                        <h1>删除供货信息
+                            <span></span>
+                        </h1>
+                            <label>
+                                <span>id:</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                            </label>
+                        <input type="hidden" name="whichform" value="3" >
+                            <input type="submit" value="删除" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error3 }}</h6>
+                            <h6 id="success">{{ success3 }}</h6>
+                    </form>
+                      <form method="post" action="admin/inventory/supply_info" class="basic-grey">
+{#                        <h1>查询供货信息#}
+{#                            <span></span>#}
+{#                        </h1>#}
+                        <input type="hidden" name="whichform" value="2" >
+                         <input type="submit" value="查询" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error2 }}</h6>
+                            <h6 id="success">{{ success2 }}</h6>
+                    </form>
+						</p>
+						<div class="tm-flex-center">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    <div class="row">
+		<div class="tm-section" id="tm-section-5">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<h3 class="blue-text"></h3>
+
+				<table class="table table-striped tm-full-width-large-table">
+					<thead>
+                    <tr>
+                        <th>id</th>
+                        <th>供货单号</th>
+                        <th>供货商</th>
+                        <th>供货时间</th>
+                        <th>供货类型</th>
+                        <th>数量</th>
+                        <th>单价</th>
+                        <th>总价</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for result in result %}
+                        <tr>
+                        <td>{{ result.id }}</td>
+                        <td>{{ result.ordernumber }}</td>
+                        <td>{{ result.supplier }}</td>
+                        <td>{{ result.supply_time }}</td>
+                        <td>{{ result.type }}</td>
+                        <td>{{ result.number }}</td>
+                        <td>{{ result.price }}</td>
+                        <td>{{ result.totalprice}}</td>
+                        <td>{{ result.note }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+				</table>
+			</div>
+		</div> <!-- tm-section -->
+	</div>
+{% endblock %}

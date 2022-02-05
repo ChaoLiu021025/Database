@@ -1,0 +1,109 @@
+{% extends 'customer/cus.html' %}
+{% block title %}
+    <title>录入客户信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div class="row">
+		<div class="tm-section" id="tm-section-3">
+			<div class="col-md-6 margin-bottom-sm-8">
+                <div class="tm-2-col-box-left">
+                    <p class="text-left tm-description">
+                        <form action="admin/customer/add_info" method="post" class="basic-grey">
+                        <h1>添加客户信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>姓名：</span><input type="text" name="name" class="input_info_text">
+                        </label>
+                        <label>
+                            <span>性别：</span><select name="sex" class="input_info_text"><option value="男">男</option><option value="女">女</option></select>
+                        </label>
+                        <label>
+                            <span>年龄：</span><input type="text" name="age" class="input_info_text" value="0">
+                        </label>
+                        <label>
+                            <span>身份证号：</span><input type="text" name="Idcard" class="input_info_text">
+                        </label>
+                        <label>
+                            <span>联系方式：</span><input type="text" name="mobile" class="input_info_text" value="0">
+                        </label>
+                        <label>
+                            <span>省：</span><input type="text" name="province" placeholder="乌兰察布市" class="input_info_text">
+                        </label>
+                        <label>
+                            <span>市：</span><input type="text" name="city" placeholder="集宁区" class="input_info_text">
+                        </label>
+                        <label>
+                            <span>详细地址：</span><input type="text" name="address" class="input_info_text" value="无">
+                        </label>
+                        <label>
+                            <span>备注：</span><input type="text" name="note" class="input_info_text" value="空">
+                        </label>
+                            <input type="hidden" name="whichform" value="1" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="提交">
+                    <input type="hidden" name="whichform" value="1" >
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                            </form>
+
+
+					</div>
+				</div>
+			    <div class="col-md-6">
+				    <div>
+                        <p class="tm-description-text">
+                         <form action="admin/customer/add_info"   enctype="multipart/form-data" method="post" class="basic-grey">
+                        <h1>
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span></span><input type="file" name="file" class="input_info_text">
+                        </label>
+                            <input type="hidden" name="whichform" value="3" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="批量导入">
+                            <h6 id="error">{{ error3 }}</h6>
+                            <h6 id="success">{{ success3 }}</h6>
+                            </form>
+                        <form action="admin/customer/add_info"   enctype="multipart/form-data" method="post" class="basic-grey">
+                        <h1>
+                            <span></span>
+                        </h1>
+                            <input type="hidden" name="whichform" value="4" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="下载客户信息表">
+                            <h6 id="error">{{ error4 }}</h6>
+                            <h6 id="success">{{ success4 }}</h6>
+                            </form>
+
+                         <form method="post" action="admin/customer/add_info" class="basic-grey">
+                                <h1>点击查询所有交易信息
+                                <span>只能通过一种或直接点击查询所有</span>
+                                </h1>
+                                <label>
+                                    <span>姓名查询：</span><input type="text" name="name" class="input_info_text">
+                                </label>
+                                <label>
+                                    <span>身份证号查询：</span><input type="text" name="Idcard" class="input_info_text">
+                                </label>
+                                <label>
+                                    <span>联系方式查询：</span><input type="text" name="mobile" class="input_info_text">
+                                </label>
+                                <input type="hidden" name="whichform" value="2" >
+							    <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="查询">
+                                 <h6 id="error">{{ error2 }}</h6>
+                                <h6 id="success">{{ success2 }}</h6>
+                            </form>
+
+
+                    </p>
+
+						<div class="tm-flex-center">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+{% endblock %}

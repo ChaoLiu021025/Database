@@ -1,0 +1,46 @@
+{% extends 'agent/age.html' %}
+{% block title %}
+    <title>查询经销商信息</title>
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div id="wai">
+    <div class="input_info_div">
+<form method="post" action="search_info">
+    <b>输入经销商名字查询：</b><input type="text" name="name" class="search_info_text"><br>
+    <input type="submit" value="查询" class="input_info_submit">
+    <h6 id="error">{{ error }}</h6>
+    <h6 id="success">{{ success }}</h6>
+</form>
+    </div>
+    <div class="input_info_div3">
+    查询结果：
+        <table id='result' border="2">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>经销商</th>
+                <th>地址</th>
+                <th>联系方式</th>
+                <th>经销类型</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in result %}
+                <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.name }}</td>
+                <td>{{ result.address }}</td>
+                <td>{{ result.mobile }}</td>
+                <td>{{ result.type }}</td>
+                <td>{{ result.note }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

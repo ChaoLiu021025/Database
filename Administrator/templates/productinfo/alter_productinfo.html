@@ -1,0 +1,60 @@
+{% extends 'productinfo/product.html' %}
+{% block title %}
+    <title>修改产品信息</title>
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div id="wai">
+    <div class="input_info_div">
+    <form method="post" action="alter_info" enctype="multipart/form-data">
+        <input type="hidden" value="2" name="whichform">
+        <input type="submit" value="查询" class="input_info_submit">
+    </form>
+<form method="post" action="alter_info" enctype="multipart/form-data">
+    <b>修改id:</b><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>
+    <b>修改选项：</b><select name="option" class="input_info_text"><option value="kong">无</option><option value="info">产品信息</option><option value="picture">图片</option></select>
+    <b>产品信息：</b><textarea type="text" name="info" class="input_info_text" style="height: 100px"></textarea><br>
+    <b>图片更新：</b><input type="file" name="picture" class="input_info_text"><br>
+    <input type="submit" value="提交" class="input_info_submit">
+<input type="hidden" value="1" name="whichform">
+    <h6 id="error">{{ error }}</h6>
+    <h6 id="success">{{ success }}</h6>
+</form>
+    <form method="post" action="alter_info" enctype="multipart/form-data">
+        <input type="hidden" value="3" name="whichform">
+        <b>删除产品信息的id：</b><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>
+        <input type="submit" value="删除" class="input_info_submit">
+         <h6 id="error">{{ error2 }}</h6>
+        <h6 id="success">{{ success2 }}</h6>
+    </form>
+
+    </div>
+    <div class="input_info_div3">
+    详细信息：
+        <table id='result' border="2">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>型号</th>
+                <th>介绍</th>
+                <th>图片</th>
+                <th>是否发布</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for info in all_info %}
+                <tr>
+                <td>{{ info.id }}</td>
+                <td>{{ info.model }}</td>
+                <td><textarea type="text" name="info" class="input_info_text" style="height: 100px">{{ info.information }}</textarea></td>
+                <td><img src="{{ MEDIA_URL }}{{ info.picture }}" width="300"></td>
+                <td>{{ info.release }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

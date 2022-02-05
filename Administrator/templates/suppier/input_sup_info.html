@@ -1,0 +1,66 @@
+{% extends 'suppier/sup.html' %}
+{% block title %}
+    <title>录入供货商信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div class="row">
+		<div class="tm-section" id="tm-section-3">
+			<div class="col-md-6 margin-bottom-sm-8">
+                <div class="tm-2-col-box-left">
+                    <p class="text-left tm-description">
+                    <form action="admin/suppier/add_info" method="post" class="basic-grey">
+                        <h1>添加供货商信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>供货商：</span><input type="text" name="supplier" class="input_info_text" value="">
+                        </label>
+                        <label>
+                            <span>供货商地址：</span><input type="text" name="address" class="input_info_text">
+                        </label>
+                        <label>
+                            <span>联系方式：</span><input type="text" name="mobile" class="input_info_text">
+                        </label>
+                    <label>
+                            <span>备注：</span><input type="text" name="note" class="input_info_text">
+                        </label>
+                        <label>
+                            <span>供货类型(可多选)：</span><input type="text" name="type" class="input_info_text">
+                        </label>
+
+                            <input type="hidden" name="whichform" value="1" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="提交">
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                            </form>
+                    </p>
+
+					</div>
+				</div>
+			    <div class="col-md-6">
+				    <div>
+                        <p class="tm-description-text">
+                         <form method="post" action="admin/suppier/add_info" class="basic-grey">
+                        <h1>查找供货商信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>供货商名称：</span><input type="text" name="name" class="search_info_text">
+                        </label>
+                        <input type="hidden" name="whichform" value="2" >
+                         <input type="submit" value="查询" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error2 }}</h6>
+                            <h6 id="success">{{ success2 }}</h6>
+                    </form>
+						</p>
+						<div class="tm-flex-center">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+{% endblock %}

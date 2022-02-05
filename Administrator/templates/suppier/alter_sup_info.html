@@ -1,0 +1,156 @@
+{#{% extends 'suppier/sup.html' %}#}
+{#{% block title %}#}
+{#    <title>更改供货商信息</title>#}
+{#{% endblock %}#}
+{##}
+{##}
+{#    <br><br>#}
+{#{% block mainbody %}#}
+{#    <div id="wai">#}
+{#    <div class="input_info_div">#}
+{#<form method="post" action="alter_info">#}
+{#    <b>输入供货商名字查询：</b><input type="text" name="name" class="search_info_text"><br>#}
+{#    <input type="hidden" name="whichform" value="1" >#}
+{#    <input type="submit" value="查询" class="input_info_submit">#}
+{#    <h6 id="error">{{ error1 }}</h6>#}
+{#    <h6 id="success">{{ success1 }}</h6>#}
+{#</form>#}
+{#    <form method="post" action="alter_info">#}
+{#        <b>修改供货商的id：</b>#}
+{#       <select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#    <b>输入要修改的选项：</b>#}
+{#    <select name="option" class="input_info_text">#}
+{#        <option value="kong">无</option>#}
+{#        <option value="name">供货商单位</option>#}
+{#        <option value="address">地址</option>#}
+{#        <option value="mobile">电话</option>#}
+{#        <option value="type">类型</option>#}
+{#        <option value="note">备注</option>#}
+{#         <input type="hidden" name="whichform" value="2" ><br>#}
+{#        <b>修改内容</b>#}
+{#        <input type="text" name="alter" class="search_info_text">#}
+{#        <input type="submit" class="input_info_submit" value="提交">#}
+{#        <h6 id="error">{{ error2 }}</h6>#}
+{#        <h6 id="success">{{ success2 }}</h6>#}
+{#    </select>#}
+{#</form>#}
+{#        <form method="post" action="alter_info">#}
+{#            <b>删除供货商的id：</b>#}
+{#            <select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#            <input type="hidden" name="whichform" value="3" >#}
+{#            <input type="submit" class="input_info_submit" value="删除">#}
+{#            <h6 id="error">{{ error3 }}</h6>#}
+{#            <h6 id="success">{{ success3 }}</h6>#}
+{#        </form>#}
+{#    </div>#}
+{#    <div class="input_info_div3">#}
+{#    查询结果：#}
+{#        <table id='result' border="2">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>id</th>#}
+{#                <th>供货商</th>#}
+{#                <th>地址</th>#}
+{#                <th>联系方式</th>#}
+{#                <th>供货类型</th>#}
+{#                <th>备注</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for result in result %}#}
+{#                <tr>#}
+{#                <td>{{ result.id }}</td>#}
+{#                <td>{{ result.name }}</td>#}
+{#                <td>{{ result.address }}</td>#}
+{#                <td>{{ result.mobile }}</td>#}
+{#                <td>{{ result.type }}</td>#}
+{#                <td>{{ result.note }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+
+{% extends 'suppier/sup.html' %}
+{% block title %}
+    <title>更改供货商信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div class="row">
+		<div class="tm-section" id="tm-section-3">
+			<div class="col-md-6 margin-bottom-sm-8">
+                <div class="tm-2-col-box-left">
+                    <p class="text-left tm-description">
+                        <form action="admin/suppier/alter_info" method="post" class="basic-grey">
+                        <h1>修改供货商的信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>id：</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                        </label>
+                        <label>
+                            <span>输入要修改的选项：</span>
+                            <select name="option" class="input_info_text">#}
+                                <option value="kong">无</option>
+                                <option value="name">供货商单位</option>
+                                <option value="address">地址</option>
+                                <option value="mobile">电话</option>
+                                <option value="type">类型</option>
+                                <option value="note">备注</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>修改内容：</span><input type="text" name="alter" class="search_info_text">
+                        </label>
+                            <input type="hidden" name="whichform" value="1" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="提交">
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                            </form>
+                    </p>
+					</div>
+				</div>
+			    <div class="col-md-6">
+				    <div>
+                        <p class="tm-description-text">
+
+
+                        <form method="post" action="admin/suppier/alter_info" class="basic-grey">
+                            <h1>删除供货商
+                                <span></span>
+                                </h1>
+                                <label>
+                                    <span>删除客供货商的id：</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>
+                            </label>
+                                    <input type="hidden" name="whichform" value="2" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="删除">
+                            <h6 id="error">{{ error2 }}</h6>
+                            <h6 id="success">{{ success2 }}</h6>
+                         </form>
+                        <form method="post" action="admin/suppier/alter_info" class="basic-grey">
+{#                        <h1>查找供货商信息#}
+{#                            <span></span>#}
+{#                        </h1>#}
+                        <label>
+                            <span>供货商名称：</span><input type="text" name="name" class="search_info_text">
+                        </label>
+                        <input type="hidden" name="whichform" value="3" >
+                         <input type="submit" value="查询" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error3 }}</h6>
+                            <h6 id="success">{{ success3 }}</h6>
+                    </form>
+						</p>
+						<div class="tm-flex-center">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+{% endblock %}

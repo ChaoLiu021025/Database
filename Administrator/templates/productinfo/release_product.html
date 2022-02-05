@@ -1,0 +1,110 @@
+{#{% extends 'productinfo/product.html' %}#}
+{#{% block title %}#}
+{#    <title>发布产品信息</title>#}
+{#{% endblock %}#}
+{##}
+{##}
+{#    <br><br>#}
+{#{% block mainbody %}#}
+{#    <div id="wai">#}
+{#    <div class="input_info_div">#}
+{#    <form method="post" action="release" enctype="multipart/form-data">#}
+{#        <input type="hidden" value="2" name="whichform">#}
+{#        <input type="submit" value="查询" class="input_info_submit">#}
+{#    </form>#}
+{#<form method="post" action="release" enctype="multipart/form-data">#}
+{#    <b>发布产品的id:</b><select name="ID" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#    <input type="submit" value="提交" class="input_info_submit">#}
+{#<input type="hidden" value="1" name="whichform">#}
+{#    <h6 id="error">{{ error }}</h6>#}
+{#    <h6 id="success">{{ success }}</h6>#}
+{#</form>#}
+{#<form method="post" action="release" enctype="multipart/form-data">#}
+{#    <b>撤销发布产品的id:</b><select name="ID" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#    <input type="submit" value="提交" class="input_info_submit">#}
+{#<input type="hidden" value="3" name="whichform">#}
+{#    <h6 id="error">{{ error2 }}</h6>#}
+{#    <h6 id="success">{{ success2 }}</h6>#}
+{#</form>#}
+{#    </div>#}
+{#    <div class="input_info_div3">#}
+{#    详细信息：#}
+{#        <table id='result' border="2">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>id</th>#}
+{#                <th>型号</th>#}
+{#                <th>介绍</th>#}
+{#                <th>图片</th>#}
+{#                <th>是否发布</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for info in all_info %}#}
+{#                <tr>#}
+{#                <td>{{ info.id }}</td>#}
+{#                <td>{{ info.model }}</td>#}
+{#                <td><textarea type="text" name="info" class="input_info_text" style="height: 100px">{{ info.information }}</textarea></td>#}
+{#                <td><img src="{{ MEDIA_URL }}{{ info.picture }}" width="300"></td>#}
+{#                <td>{{ info.release }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+
+{% extends 'productinfo/product.html' %}
+{% block title %}
+    <title>添加修改产品信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div class="row">
+		<div class="tm-section" id="tm-section-2">
+			<div class="col-md-12">
+
+
+                <form method="post" action="admin/product/release" enctype="multipart/form-data" class="basic-grey">
+{#                        <h1>发布产品信息#}
+{#                            <span></span>#}
+{#                        </h1>#}
+                        <label>
+                            <span>发布产品的id：</span><select name="ID" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                        </label>
+                        <input type="hidden" name="whichform" value="2" >
+                         <input type="submit" value="发布" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error2 }}</h6>
+                            <h6 id="success">{{ success2 }}</h6>
+                    </form>
+
+                <form method="post" action="admin/product/release" enctype="multipart/form-data" class="basic-grey">
+{#                        <h1>撤销产品信息#}
+{#                            <span></span>#}
+{#                        </h1>#}
+                        <label>
+                            <span>撤销产品的id：</span><select name="ID" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                        </label>
+                        <input type="hidden" name="whichform" value="3" >
+                         <input type="submit" value="撤销" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error3 }}</h6>
+                            <h6 id="success">{{ success3 }}</h6>
+                    </form>
+             <form method="post" action="admin/product/release" enctype="multipart/form-data" class="basic-grey">
+{#                        <h1>查询产品信息#}
+{#                            <span></span>#}
+{#                        </h1>#}
+                        <input type="hidden" name="whichform" value="1" >
+                         <input type="submit" value="查询" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                    </form>
+			</div>
+		</div>
+	</div>
+{% endblock %}

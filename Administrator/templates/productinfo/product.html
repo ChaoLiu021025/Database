@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% block title %}
+<title>产品信息</title>
+    {% endblock %}
+<!-- load stylesheets -->
+<link rel="stylesheet" href="http://fonts.useso.com/css?family=Open+Sans:100,300,400">   <!-- Google web font "Open Sans" -->
+<link rel="stylesheet" href="../../../static/css/font-awesome.min.css">                <!-- Font Awesome -->
+<link rel="stylesheet" href="../../../static/css/bootstrap1.min.css">                                      <!-- Bootstrap style -->
+<link rel="stylesheet" href="../../../static/css/magnific-popup.css">                                     <!-- Magnific pop up style -->
+<link rel="stylesheet" href="../../../static/css/templatemo-style.css">                                 <!-- Templatemo style -->
+<link rel="stylesheet" href="../../../static/css/form.css">
+<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui-v2.5.6/css/layui.css"/>
+<style type="text/css">
+.nav {
+	width: 100%;
+	height: 80px;
+	box-shadow: 0 3px 3px 0 #CCC;
+	background: #FFF;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 999;
+	overflow: hidden;
+	transition: 0.3s
+}
+.nav.index {
+	background: rgba(255, 255, 255 ,0.8);
+	box-shadow: 0 0 0 0 rgba(0,0,0,0.05);
+}
+.nav.scroll {
+	background: #FFF;
+	box-shadow: 0 3px 3px 0 rgba(0,0,0,0.05);
+	transition: 0.3s
+}
+.nav .layui-container {
+	position: relative;
+	transition: all 400ms ease-out;
+}
+.nav .nav-logo {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 15px;
+	line-height: 80px;
+}
+.nav .nav-list {
+	display: inline-block;
+	height: 80px;
+}
+.nav .nav-list button {
+	width: 25px;
+	height: 30px;
+	position: absolute;
+	top: 30px;
+	right: 15px;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.nav .nav-list button span {
+	display: block;
+	width: 25px;
+	height: 2px;
+	background: #2db5a3;
+	margin-bottom: 6px;
+	transition: 0.5s;
+}
+.nav .nav-list button span.spa1 {
+	transform: rotate(45deg);
+}
+.nav .nav-list button span.spa3 {
+	transform: rotate(-45deg) translate(5px, -5px);
+}
+.nav .layui-nav {
+	width: 100%;
+	position: absolute;
+	top: 80px;
+	right: 0;
+	color: #000;
+	background: transparent;
+}
+.nav .layui-nav .layui-nav-item {
+	display: block;
+	line-height: 60px;
+}
+.nav .layui-nav * {
+	font-size: 18px;
+}
+.nav .layui-nav .layui-nav-item a {
+	padding: 0 0;
+	color: #000;
+}
+.nav .layui-nav-bar, .nav .layui-nav .layui-this:after {
+	height: 2px;
+	background-color: #2db5a3;
+}
+.nav .layui-nav .layui-this a, .nav .layui-nav .layui-nav-item a:hover {
+	color: #2db5a3;
+}
+
+@media screen and (min-width: 768px) {
+.nav {
+	max-height: 80px;
+}
+.nav.index {
+	background: rgba(255, 255, 255 ,0.3);
+}
+.nav .nav-list button {
+	display: none;
+}
+.nav .layui-nav {
+	width: auto;
+	position: absolute;
+	top: 0;
+	padding: 0 5px;
+	border-radius: 0;
+	margin: 0;
+}
+.nav .layui-nav .layui-nav-item {
+	display: inline-block;
+	margin: 0 53px;
+	line-height: 80px;
+}
+}
+</style>
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body id="top" class="page-2">
+{#<div class="tm-navbar-container tm-navbar-container-dark">#}
+{##}
+{#	<nav class="navbar navbar-full navbar-fixed-top bg-inverse">#}
+{#		<button class="navbar-toggler hidden-md-up" type="button" data-toggle="collapse" data-target="#tmNavbar">#}
+{#			&#9776;#}
+{#		</button>#}
+{#		<div class="navbar-toggleable-sm" id="tmNavbar">#}
+{#			<ul class="nav navbar-nav">#}
+{#				<li class="nav-item">#}
+{#					<a href="/admin/product/add_alter" class="nav-link">添加修改产品信息</a>#}
+{#				</li>#}
+{#				<li class="nav-item">#}
+{#					<a href="/admin/product/release" class="nav-link">发布产品信息</a>#}
+{#				</li>#}
+{#                <li class="nav-item">#}
+{#					<a href="/admin" class="nav-link">返回管理员界面</a>#}
+{#				</li>#}
+{#                <li class="nav-item">#}
+{#					<a href="/" class="nav-link">返回主页</a>#}
+{#				</li>#}
+{#				<li class="nav-item">#}
+{#					<form action="/logout" method="post" class="nav-link"><input type="submit" value="退出登录" class="logout"></form>#}
+{#				</li>#}
+{#			</ul>#}
+{#		</div>#}
+{#	</nav>#}
+{##}
+{#</div>#}
+
+            <div class="row">
+                <div class="nav index" style="height: 80px;">
+                  <div class="layui-container">
+                    <div class="nav-list">
+                      <button> <span class=""></span><span style="display: block;"></span><span class=""></span> </button>
+                      <ul class="layui-nav" lay-filter="">
+                        <li class="layui-nav-item"><a href="/admin/product/add_alter" class="nav-link">添加修改产品信息</a></li>
+                        <li class="layui-nav-item"><a href="/admin/product/release" class="nav-link">发布产品信息</a></li>
+                          <li class="layui-nav-item"><a href="/admin" class="nav-link">返回管理员界面</a></li>
+                        <li class="layui-nav-item"><a href="/" class="nav-link">返回主页</a></li>
+                        <li class="layui-nav-item"><form action="/logout" method="post" class="nav-link"><input type="submit" value="退出登录" class="logout"></form></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+<div class="container-fluid">
+
+{% block mainbody %}
+
+
+    <div class="row">
+	  <div id="tm-section-1" class="tm-section">
+		<div class="col-md-12">
+			<h1 class="text-xs-center blue-text tm-page-2-title">产品信息</h1>
+			<p class="text-xs-center tm-page-2-p tm-page-2-subtitle">
+			</p>
+		</div>
+	  </div>
+	</div>
+
+<!-- .container -->
+{% endblock %}
+
+<div class="row">
+		<div class="tm-section" id="tm-section-5">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+				<h3 class="blue-text"></h3>
+
+				<table class="table table-striped tm-full-width-large-table">
+					<thead>
+                         <tr>
+                            <th>id</th>
+                            <th>型号</th>
+                            <th>介绍</th>
+                            <th>图片</th>
+                            <th>是否发布</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for info in all_info %}
+                        <tr>
+                            <td>{{ info.id }}</td>
+                            <td>{{ info.model }}</td>
+                            <td>{{ info.information }}</td>
+                            <td><img src="{{ MEDIA_URL }}{{ info.picture }}" width="300"></td>
+                            <td>{{ info.release }}</td>
+                        </tr>
+            {% endfor %}
+            </tbody>
+				</table>
+			</div>
+		</div> <!-- tm-section -->
+	</div>
+<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+			<p class="text-xs-center tm-footer-text">Copyright &copy; 2021 YiFeng Agricultural Machinery 101.42.141.149 All Rights Reserved.</p>
+		</div>
+	</div>
+</div>
+<script src="js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
+<script src="https://www.atlasestateagents.co.uk/javascript/tether.min.js"></script> <!-- Tether for Bootstrap, http://stackoverflow.com/questions/34567939/how-to-fix-the-error-error-bootstrap-tooltips-require-tether-http-github-h -->
+<script src="js/bootstrap.min.js"></script>                 <!-- Bootstrap (http://v4-alpha.getbootstrap.com/) -->
+<script src="js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
+
+<!-- Templatemo scripts -->
+<script>
+
+	$(document).ready(function(){
+
+		var mobileTopOffset = 54;
+		var tabletTopOffset = 74;
+		var desktopTopOffset = 79;
+		var topOffset = desktopTopOffset;
+
+		if($(window).width() <= 767) {
+			topOffset = mobileTopOffset;
+		}
+		else if($(window).width() <= 991) {
+			topOffset = tabletTopOffset;
+		}
+
+		/* Single page nav
+		-----------------------------------------*/
+		$('#tmNavbar').singlePageNav({
+			'currentClass' : "active",
+			offset : topOffset,
+			'filter': ':not(.external)'
+		});
+
+		if($(window).width() < 570) {
+			$('.tm-full-width-large-table').addClass('table-responsive');
+		}
+		else {
+			$('.tm-full-width-large-table').removeClass('table-responsive');
+		}
+
+
+		/* Collapse menu after click
+		-----------------------------------------*/
+		$('#tmNavbar a').click(function(){
+			$('#tmNavbar').collapse('hide');
+		});
+
+
+		/* Handle nav offset & table responsive upon window resize
+		--------------------------------------------------------------*/
+		$(window).resize(function(){
+
+			if($(window).width() < 768) {
+				topOffset = mobileTopOffset;
+			}
+			else if($(window).width() <= 991) {
+				topOffset = tabletTopOffset;
+			}
+			else {
+				topOffset = desktopTopOffset;
+			}
+
+			$('#tmNavbar').singlePageNav({
+				'currentClass' : "active",
+				offset : topOffset,
+				'filter': ':not(.external)'
+			});
+
+			if($(window).width() < 570) {
+				$('.tm-full-width-large-table').addClass('table-responsive');
+			}
+			else {
+				$('.tm-full-width-large-table').removeClass('table-responsive');
+			}
+		});
+
+	});
+
+</script>
+
+
+<script>
+    function changeStyle() {
+            var template = document.getElementById("template");var index = template.selectedIndex;
+            var templatevalue = template.options[index].value;
+            var templatecss = document.getElementById("templatecss");
+            templatecss.setAttribute("href","css/" + templatevalue + ".css");
+            document.getElementsByTagName("form")[0].setAttribute("class",templatevalue);
+    }
+</script>
+<script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
+<script>
+//一般直接写在一个js文件中
+layui.use(['jquery', 'element', 'carousel'], function(){
+  var $ = layui.jquery
+  ,element = layui.element
+  ,carousel = layui.carousel
+
+  //滚动监听
+  $(window).scroll(function() {
+    var scr=$(document).scrollTop();
+    scr > 0 ? $(".nav").addClass('scroll') : $(".nav").removeClass('scroll');
+  });
+
+
+  //导航切换
+  var btn = $('.nav').find('.nav-list').children('button')
+  ,spa = btn.children('span')
+  ,ul = $('.nav').find('.nav-list').children('.layui-nav');
+  btn.on('click', function(){
+    if(!$(spa[0]).hasClass('spa1')){
+      spa[0].className = 'spa1';
+      spa[1].style.display = 'none';
+      spa[2].className = 'spa3';
+      $('.nav')[0].style.height = 90 + ul[0].offsetHeight + 'px';
+    }else{
+      spa[0].className = '';
+      spa[1].style.display = 'block';
+      spa[2].className = '';
+      $('.nav')[0].style.height = 80 + 'px';
+    }
+  });
+
+
+
+});
+</script>
+<script>
+window.onbeforeunload = function () {
+    var scrollPos;
+    if (typeof window.pageYOffset != 'undefined') {
+        scrollPos = window.pageYOffset;
+    }
+    else if (typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat') {
+        scrollPos = document.documentElement.scrollTop;
+    }
+    else if (typeof document.body != 'undefined') {
+        scrollPos = document.body.scrollTop;
+    }
+    document.cookie = "scrollTop=" + scrollPos; //存储滚动条位置到cookies中
+}
+
+window.onload = function () {
+    if (document.cookie.match(/scrollTop=([^;]+)(;|$)/) != null) {
+        var arr = document.cookie.match(/scrollTop=([^;]+)(;|$)/); //cookies中不为空，则读取滚动条位置
+        document.documentElement.scrollTop = parseInt(arr[1]);
+        document.body.scrollTop = parseInt(arr[1]);
+    }
+}
+</script>
+</body>
+</html>

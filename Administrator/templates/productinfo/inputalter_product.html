@@ -1,0 +1,88 @@
+{% extends 'productinfo/product.html' %}
+{% block title %}
+    <title>添加修改产品信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div class="row">
+		<div class="tm-section" id="tm-section-3">
+			<div class="col-md-6 margin-bottom-sm-8">
+                <div class="tm-2-col-box-left">
+                    <p class="text-left tm-description">
+                        <form action="admin/product/add_alter" enctype="multipart/form-data" method="post" class="basic-grey" >
+                        <h1>添加产品信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>类型：</span><select name="model" class="input_info_text"><option value="kong">无</option>{% for model in models %}  <option value='{{ model.type }}'>{{ model.type }}</option>  {% endfor %}</select>
+                        </label>
+                        <label>
+                            <span>产品信息：</span><textarea type="text" name="info" class="input_info_text" style="height: 100px"></textarea>
+                        </label>
+                <label>
+                            <span>是否发布：</span><select name="release" class="input_info_text"><option value="kong">无</option><option value='是'>是</option><option value='否'>否</option></select>
+                        </label>
+                        <label>
+                            <span>图片上传：</span><input type="file" name="picture" class="input_info_text">
+                        </label>
+
+                            <input type="hidden" name="whichform" value="1" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="提交">
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                            </form>
+                    <form method="post" action="admin/product/add_alter" enctype="multipart/form-data" class="basic-grey">
+                        <input type="hidden" value="2" name="whichform">
+                        <input type="submit" value="查询" class="btn btn-default tm-normal-btn tm-green-btn">
+                    </form>
+                    </p>
+
+					</div>
+				</div>
+			    <div class="col-md-6">
+				    <div>
+                        <p class="tm-description-text">
+
+
+                         <form method="post" action="admin/product/add_alter" enctype="multipart/form-data" class="basic-grey">
+                        <h1>修改产品信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>修改id：</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                        </label>
+                        <label>
+                            <span>修改选项：</span><select name="option" class="input_info_text"><option value="kong">无</option><option value="info">产品信息</option><option value="picture">图片</option></select>
+                        </label>
+                        <label>
+                            <span>产品信息：</span><textarea type="text" name="info" class="input_info_text" style="height: 100px"></textarea>
+                        </label>
+                        <label>
+                            <span>图片更新：</span><input type="file" name="picture" class="input_info_text">
+                        </label>
+                        <input type="hidden" name="whichform" value="3" >
+                         <input type="submit" value="提交" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error3 }}</h6>
+                            <h6 id="success">{{ success3 }}</h6>
+                    </form>
+                    <form method="post" action="admin/product/add_alter" enctype="multipart/form-data" class="basic-grey">
+
+                        <label>
+                            <span>删除产品信息的id：</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                        </label>
+                        <input type="hidden" name="whichform" value="4" >
+                         <input type="submit" value="删除" class="btn btn-default tm-normal-btn tm-green-btn">
+                            <h6 id="error">{{ error4 }}</h6>
+                            <h6 id="success">{{ success4 }}</h6>
+                    </form>
+						</p>
+						<div class="tm-flex-center">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+{% endblock %}

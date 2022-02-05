@@ -1,0 +1,59 @@
+{% extends 'customer/cus.html' %}
+{% block title %}
+    <title>查询客户信息</title>
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div id="wai">
+    <div class="input_info_div">
+<form method="post" action="search_info">
+    <b>只能通过一种方式</b><br>
+    <b>输入姓名查询：</b><input type="text" name="name" class="search_info_text"><br>
+    <b>输入身份证号查询：</b><input type="text" name="Idcard" class="search_info_text"><br>
+    <b>根据联系方式查询：</b><input type="text" name="mobile" class="search_info_text"><br>
+    <input type="submit" value="查询" class="input_info_submit">
+    <h6 id="error">{{ error }}</h6>
+    <h6 id="success">{{ success }}</h6>
+</form>
+    </div>
+    <div class="input_info_div3">
+        <table id='result' border="2">
+            <caption>查询结果</caption>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>年龄</th>
+                <th>身份证号</th>
+                <th>联系方式</th>
+                <th>省</th>
+                <th>市</th>
+                <th>具体地址</th>
+                <th>创建时间</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in result %}
+                <tr>
+                <td>{{ result.id }}</td>
+                <td>{{ result.name }}</td>
+                <td>{{ result.sex }}</td>
+                <td>{{ result.age }}</td>
+                <td>{{ result.Idcard }}</td>
+                <td>{{ result.mobile }}</td>
+                <td>{{ result.province}}</td>
+                <td>{{ result.city }}</td>
+                <td>{{ result.address }}</td>
+                <td>{{ result.addTime }}</td>
+                <td>{{ result.note }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+{% endblock %}

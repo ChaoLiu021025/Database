@@ -1,0 +1,197 @@
+{#{% extends 'customer/cus.html' %}#}
+{#{% block title %}#}
+{#    <title>更改客户信息</title>#}
+{#{% endblock %}#}
+{##}
+{##}
+{#    <br><br>#}
+{#{% block mainbody %}#}
+{#    <div id="wai">#}
+{#    <div class="input_info_div">#}
+{#<form method="post" action="alter_info">#}
+{#    <b>查找要修改人的信息：</b><br>#}
+{#    <b>输入姓名查询：</b><input type="text" name="name" class="search_info_text"><br>#}
+{#    <b>输入身份证号查询：</b><input type="text" name="Idcard" class="search_info_text"><br>#}
+{#    <b>根据联系方式查询：</b><input type="text" name="mobile" class="search_info_text"><br>#}
+{#    <input type="hidden" name="whichform" value="1" >#}
+{#    <input type="submit" value="查询" class="input_info_submit">#}
+{#    <h6 id="error">{{ error1 }}</h6>#}
+{#    <h6 id="success">{{ success1 }}</h6>#}
+{#</form>#}
+{#    <form method="post" action="alter_info">#}
+{#        <b>修改客户的id：</b>#}
+{#        <select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#    <b>输入要修改的选项：</b>#}
+{#    <select name="option" class="input_info_text">#}
+{#        <option value="kong">无</option>#}
+{#        <option value="name">姓名</option>#}
+{#        <option value="sex">性别</option>#}
+{#        <option value="age">年龄</option>#}
+{#        <option value="Idcard">身份证号</option>#}
+{#        <option value="mobile">电话</option>#}
+{#        <option value="province">省</option>#}
+{#        <option value="city">市</option>#}
+{#        <option value="address">详细地址</option>#}
+{#        <option value="note">备注</option>#}
+{#         <input type="hidden" name="whichform" value="2" ><br>#}
+{#        <b>修改内容</b>#}
+{#        <input type="text" name="alter" class="search_info_text">#}
+{#        <input type="submit" class="input_info_submit" value="提交">#}
+{#        <h6 id="error">{{ error2 }}</h6>#}
+{#        <h6 id="success">{{ success2 }}</h6>#}
+{#    </select>#}
+{#</form>#}
+{#        <form method="post" action="alter_info">#}
+{#            <b>删除客户的id：</b>#}
+{#            <select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#            <input type="hidden" name="whichform" value="3" >#}
+{#            <input type="submit" class="input_info_submit" value="删除">#}
+{#            <h6 id="error">{{ error3 }}</h6>#}
+{#            <h6 id="success">{{ success3 }}</h6>#}
+{#        </form>#}
+{#    </div>#}
+{#    <div class="input_info_div3">#}
+{#    查询结果：#}
+{#        <table id='result' border="2">#}
+{#            <thead>#}
+{#            <tr>#}
+{#                <th>id</th>#}
+{#                <th>姓名</th>#}
+{#                <th>性别</th>#}
+{#                <th>年龄</th>#}
+{#                <th>身份证号</th>#}
+{#                <th>联系方式</th>#}
+{#                <th>省</th>#}
+{#                <th>市</th>#}
+{#                <th>具体地址</th>#}
+{#                <th>创建时间</th>#}
+{#                <th>备注</th>#}
+{#            </tr>#}
+{#            </thead>#}
+{#            <tbody>#}
+{#            {% for result in result %}#}
+{#                <tr>#}
+{#                <td>{{ result.id }}</td>#}
+{#                <td>{{ result.name }}</td>#}
+{#                <td>{{ result.sex }}</td>#}
+{#                <td>{{ result.age }}</td>#}
+{#                <td>{{ result.Idcard }}</td>#}
+{#                <td>{{ result.mobile }}</td>#}
+{#                <td>{{ result.province}}</td>#}
+{#                <td>{{ result.city }}</td>#}
+{#                <td>{{ result.address }}</td>#}
+{#                <td>{{ result.addTime }}</td>#}
+{#                <td>{{ result.note }}</td>#}
+{#                </tr>#}
+{#            {% endfor %}#}
+{#            </tbody>#}
+{#        </table>#}
+{#    </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+
+{% extends 'customer/cus.html' %}
+{% block title %}
+    <title>更改客户信息</title>
+    <base href="/">
+{% endblock %}
+
+
+    <br><br>
+{% block mainbody %}
+    <div class="row">
+		<div class="tm-section" id="tm-section-3">
+			<div class="col-md-6 margin-bottom-sm-8">
+                <div class="tm-2-col-box-left">
+                    <p class="text-left tm-description">
+                        <form action="admin/customer/alter_info" method="post" class="basic-grey">
+                        <h1>修改客户的信息
+                            <span></span>
+                        </h1>
+                        <label>
+                            <span>id：</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select>
+                        </label>
+                        <label>
+                            <span>输入要修改的选项：</span>
+                            <select name="option" class="input_info_text">#}
+                                <option value="kong">无</option>
+                                <option value="name">姓名</option>
+                                <option value="sex">性别</option>
+                                <option value="age">年龄</option>
+                                <option value="Idcard">身份证号</option>
+                                <option value="mobile">电话</option>
+                                <option value="province">省</option>
+                                <option value="city">市</option>
+                                <option value="address">详细地址</option>
+                                <option value="note">备注</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>修改内容：</span><input type="text" name="alter" class="search_info_text">
+                        </label>
+                            <input type="hidden" name="whichform" value="1" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="提交">
+                            <h6 id="error">{{ error }}</h6>
+                            <h6 id="success">{{ success }}</h6>
+                            </form>
+{# <form method="post" action="alter_info">#}
+{#        <b>修改客户的id：</b>#}
+{#        <select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>#}
+{#    <b>输入要修改的选项：</b>#}
+{#    <select name="option" class="input_info_text">#}
+{#        <option value="kong">无</option>#}
+{#        <option value="name">姓名</option>#}
+{#        <option value="sex">性别</option>#}
+{#        <option value="age">年龄</option>#}
+{#        <option value="Idcard">身份证号</option>#}
+{#        <option value="mobile">电话</option>#}
+{#        <option value="province">省</option>#}
+{#        <option value="city">市</option>#}
+{#        <option value="address">详细地址</option>#}
+{#        <option value="note">备注</option>#}
+{#         <input type="hidden" name="whichform" value="2" ><br>#}
+{#        <b>修改内容</b>#}
+{#        <input type="text" name="alter" class="search_info_text">#}
+{#        <input type="submit" class="input_info_submit" value="提交">#}
+{#        <h6 id="error">{{ error2 }}</h6>#}
+{#        <h6 id="success">{{ success2 }}</h6>#}
+{#    </select>#}
+{#</form>#}
+
+
+                    </p>
+					</div>
+				</div>
+			    <div class="col-md-6">
+				    <div>
+                        <p class="tm-description-text">
+                        <form method="post" action="admin/customer/alter_info" class="basic-grey">
+                            <h1>删除客户信息
+                                <span></span>
+                                </h1>
+                                <label>
+                                    <span>删除客户的id：</span><select name="id" class="input_info_text"><option value="kong">无</option>{% for id in all_id %}  <option value='{{ id.id }}'>{{ id.id }}</option>  {% endfor %}</select><br>
+                            </label>
+                                    <input type="hidden" name="whichform" value="2" >
+                            <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="删除">
+                            <h6 id="error">{{ error2 }}</h6>
+                            <h6 id="success">{{ success2 }}</h6>
+                         </form>
+                         <form method="post" action="admin/customer/alter_info" class="basic-grey">
+{#                                <h1>查询客户信息#}
+{#                                <span></span>#}
+{#                                </h1>#}
+                                <input type="hidden" name="whichform" value="3" >
+							    <input type="submit" class="btn btn-default tm-normal-btn tm-green-btn" value="查询">
+                                 <h6 id="error">{{ error3 }}</h6>
+                                <h6 id="success">{{ success3 }}</h6>
+                            </form>
+						</p>
+						<div class="tm-flex-center">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+{% endblock %}
